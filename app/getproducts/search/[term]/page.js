@@ -8,8 +8,6 @@ import { useRouter } from 'next/navigation';
 import LoadingSpinner from '@/components/LoadingSpinner';
 import Link from 'next/link';
 import AddToCartModal from '@/components/modal/AddToCartModal';
-// Thêm phương thức generateStaticParams()
-
 
 const Term = ({ params: { term } }) => {
     const [products, setProduct] = useState(null);
