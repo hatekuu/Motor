@@ -1,26 +1,31 @@
 "use client"
-// Import necessary libraries and components
+// Import các thư viện và components cần thiết
 import Image from 'next/image';
 import React, { useState, useEffect } from 'react';
 import * as Realm from 'realm-web';
 import { FaStar, FaStarHalfAlt } from 'react-icons/fa';
-import { useRouter } from 'next/navigation';
-  const ProductDetail = ({ params: { code } }) => {
+import { useRouter } from 'next/router';
+
+// Thêm phương thức generateStaticParams()
+export async function generateStaticParams() {
+  // ... logic để sinh các tham số tĩnh
+}
+
+const ProductDetail = ({ params: { code } }) => {
   const [product, setProduct] = useState(null);
   const [isLoading, setLoading] = useState(true);
-  const router=useRouter();
+  const router = useRouter();
+
   useEffect(() => {
     async function fetchData() {
       const REALM_APP_ID = process.env.NEXT_PUBLIC_REALM_APP_ID;
       const app = new Realm.App({ id: REALM_APP_ID });
-      if(!app.currentUser){
-        router.push("/")
+      if (!app.currentUser) {
+        router.push("/");
       }
       try {
         const functionName = 'getOneProduct';
-      
         const result = await app.currentUser.callFunction(functionName, code);
-       
         setProduct(result);
         setLoading(false);
       } catch (error) {
@@ -29,7 +34,7 @@ import { useRouter } from 'next/navigation';
     }
 
     fetchData();
-  }, );
+  }, [code]);
 
   // Function to render star ratings
   const renderStars = (rating) => {
@@ -52,7 +57,7 @@ import { useRouter } from 'next/navigation';
 
   return (
     <div className="flex items-center justify-center h-screen mt-8">
- <div className="bg-white p-8 rounded-lg shadow-md flex-1 ">
+      <div className="bg-white p-8 rounded-lg shadow-md flex-1">
         {isLoading ? (
           <p>Loading...</p>
         ) : (
@@ -92,4 +97,6 @@ import { useRouter } from 'next/navigation';
   );
 };
 
+// Gán generateStaticParams vào trang
+ProductDetail.generateStaticParams = generateStaticParams;
 export default ProductDetail;
