@@ -1,15 +1,10 @@
-
+"use client"
 // Import các thư viện và components cần thiết
 import Image from 'next/image';
 import React, { useState, useEffect } from 'react';
 import * as Realm from 'realm-web';
 import { FaStar, FaStarHalfAlt } from 'react-icons/fa';
 import { useRouter } from 'next/router';
-
-// Thêm phương thức generateStaticParams()
-export async function generateStaticParams() {
-  // ... logic để sinh các tham số tĩnh
-}
 
 const ProductDetail = ({ params: { code } }) => {
   const [product, setProduct] = useState(null);

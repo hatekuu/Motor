@@ -1,4 +1,4 @@
-
+"use client"
 // Import necessary libraries and components
 import Image from 'next/image';
 import React, { useState, useEffect } from 'react';
@@ -9,9 +9,7 @@ import LoadingSpinner from '@/components/LoadingSpinner';
 import Link from 'next/link';
 import AddToCartModal from '@/components/modal/AddToCartModal';
 // Thêm phương thức generateStaticParams()
-export async function generateStaticParams() {
-  // ... logic để sinh các tham số tĩnh
-}
+
 
 const Term = ({ params: { term } }) => {
     const [products, setProduct] = useState(null);
