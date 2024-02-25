@@ -1,4 +1,4 @@
-"use client"
+
 // Import necessary libraries and components
 import Image from 'next/image';
 import React, { useState, useEffect } from 'react';
