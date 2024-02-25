@@ -1,4 +1,4 @@
-"use client"
+
 // Import các thư viện và components cần thiết
 import Image from 'next/image';
 import React, { useState, useEffect } from 'react';
