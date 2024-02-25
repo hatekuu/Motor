@@ -5,7 +5,9 @@ import React, { useState, useEffect } from 'react';
 import * as Realm from 'realm-web';
 import { FaStar, FaStarHalfAlt } from 'react-icons/fa';
 import { useRouter } from 'next/router';
-
+export async function generateStaticParams() {
+  // ... logic to generate static parameters
+}
 const ProductDetail = ({ params: { code } }) => {
   const [product, setProduct] = useState(null);
   const [isLoading, setLoading] = useState(true);
