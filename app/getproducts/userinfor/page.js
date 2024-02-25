@@ -42,7 +42,7 @@ const router=useRouter();
       }
     }
     fetchData();
-  }, );
+  }, []);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
