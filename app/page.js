@@ -79,7 +79,7 @@ const Login = () => {
         <input
           ref={emailInputRef} 
           type="text"
-          className="mt-1 p-2 border rounded-md w-full"
+          className="mt-1 p-2 border rounded-md w-full text-gray-900"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
@@ -89,7 +89,7 @@ const Login = () => {
         <label className="block text-sm font-medium text-gray-600">Password:</label>
         <input
           type="password"
-          className="mt-1 p-2 border rounded-md w-full"
+          className="mt-1 p-2 border rounded-md w-full text-gray-900"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           onKeyDown={handleKeyDown} 
@@ -97,7 +97,7 @@ const Login = () => {
       </div>
 
       <button
-        className="flex items-center bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:shadow-outline-blue"
+        className="flex items-center bg-blue-500 py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:shadow-outline-blue"
         onClick={loginEmailPassword}
         disabled={loading}
       >
@@ -105,14 +105,14 @@ const Login = () => {
         {loading ? " Please wait" : "Log In"}
       </button>
 
-      <p className="mt-4">
+      <p className="mt-4 text-gray-500">
         Have not an account?{' '}
         <Link href="/register" className="text-blue-500">
           Register now
         </Link>
       </p>
 
-      <p className="mt-4">
+      <p className="mt-4 text-gray-500">
         Forgot your password?{' '}
         <Link href="/dong/resetpassword" className="text-blue-500">
           Click here to reset

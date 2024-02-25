@@ -61,7 +61,7 @@ export default function Register() {
         <input
           ref={emailInputRef} 
           type="text"
-          className="mt-1 p-2 border rounded-md w-full"
+          className="mt-1 p-2 border rounded-md w-full text-gray-900"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
@@ -71,7 +71,7 @@ export default function Register() {
         <label className="block text-sm font-medium text-gray-600">Password:</label>
         <input
           type="password"
-          className="mt-1 p-2 border rounded-md w-full"
+          className="mt-1 p-2 border rounded-md w-full text-gray-900"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
@@ -81,7 +81,7 @@ export default function Register() {
         <label className="block text-sm font-medium text-gray-600">Confirm Password:</label>
         <input
           type="password"
-          className={`mt-1 p-2 border rounded-md w-full ${passwordMismatch ? 'border-red-500' : ''}`}
+          className={`mt-1 p-2 border rounded-md w-full text-gray-900 ${passwordMismatch ? 'border-red-500' : ''}`}
           value={confirmPassword}
           onKeyDown={handleKeyDown} 
           onChange={(e) => {
@@ -95,14 +95,14 @@ export default function Register() {
       </div>
 
       <button
-        className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:shadow-outline-blue"
+        className="bg-blue-500  py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:shadow-outline-blue"
         onClick={registerUser}
         disabled={loading} // Disable button while loading
       >
         {loading && <LoadingSpinner />}
         {loading ? " Registering..." : "Register User"}
       </button>
-      <p className="mt-4">
+      <p className="mt-4 text-gray-600">
         Already have an account?{' '}
         <Link href="/" className="text-blue-500">
           Login now
