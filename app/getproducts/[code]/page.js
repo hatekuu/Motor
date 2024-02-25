@@ -1,28 +1,26 @@
 "use client"
-// Import các thư viện và components cần thiết
+// Import necessary libraries and components
 import Image from 'next/image';
 import React, { useState, useEffect } from 'react';
 import * as Realm from 'realm-web';
 import { FaStar, FaStarHalfAlt } from 'react-icons/fa';
-import { useRouter } from 'next/router';
-export async function generateStaticParams() {
-  // ... logic to generate static parameters
-}
-const ProductDetail = ({ params: { code } }) => {
+import { useRouter } from 'next/navigation';
+  const ProductDetail = ({ params: { code } }) => {
   const [product, setProduct] = useState(null);
   const [isLoading, setLoading] = useState(true);
-  const router = useRouter();
-
+  const router=useRouter();
   useEffect(() => {
     async function fetchData() {
       const REALM_APP_ID = process.env.NEXT_PUBLIC_REALM_APP_ID;
       const app = new Realm.App({ id: REALM_APP_ID });
-      if (!app.currentUser) {
-        router.push("/");
+      if(!app.currentUser){
+        router.push("/")
       }
       try {
         const functionName = 'getOneProduct';
+      
         const result = await app.currentUser.callFunction(functionName, code);
+       
         setProduct(result);
         setLoading(false);
       } catch (error) {
@@ -31,7 +29,7 @@ const ProductDetail = ({ params: { code } }) => {
     }
 
     fetchData();
-  }, [code]);
+  }, );
 
   // Function to render star ratings
   const renderStars = (rating) => {
@@ -54,7 +52,7 @@ const ProductDetail = ({ params: { code } }) => {
 
   return (
     <div className="flex items-center justify-center h-screen mt-8">
-      <div className="bg-white p-8 rounded-lg shadow-md flex-1">
+ <div className="bg-white p-8 rounded-lg shadow-md flex-1 ">
         {isLoading ? (
           <p>Loading...</p>
         ) : (
@@ -94,6 +92,4 @@ const ProductDetail = ({ params: { code } }) => {
   );
 };
 
-// Gán generateStaticParams vào trang
-ProductDetail.generateStaticParams = generateStaticParams;
 export default ProductDetail;
